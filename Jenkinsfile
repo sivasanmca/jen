@@ -23,9 +23,9 @@ pipeline {
           }
 	 stage('Docker Login') {
           steps{
-            withCredentials([string(credentialsId: '', variable: 'docker1pwd')]) {
-    	     sh "docker login -u sivasanmca -p ${docker1pwd}"
-		 }  
+	 withCredentials([string(credentialsId: 'password', variable: 'password')]) {
+          sh "docker login -u sivasanmca -p ${password}"
+             }  
 	  }          
           }
 	   stage('Push Docker Image') {
