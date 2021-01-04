@@ -18,6 +18,7 @@ pipeline {
 	 stage('Build Docker Image') {
           steps{
             echo 'Building the Docker Image...'
+	  sh 'docker build -t sivasanmca/dockerimage:${Build_Number} .'
               }
           }
 	 stage('Push Docker Image') {
