@@ -1,9 +1,9 @@
 pipeline {
-    agent none 
+    agent any
     stages {
         stage('SCM Checkout') {
           steps{
-            echo 'Building the application...'
+            echo 'SCM Checkout...'
 	    git 'https://github.com/sivasanmca/jen.git'
             
               }
@@ -11,30 +11,25 @@ pipeline {
           stage('Test') {
           steps{
             echo 'Testing the application...'
+	    sh ' mvn package' 
               }
           }
 
-	 stage('Test') {
+	 stage('Build Docker Image') {
           steps{
-            echo 'Testing the application...'
+            echo 'Building the Docker Image...'
               }
           }
-	 stage('Test') {
+	 stage('Push Docker Image') {
           steps{
-            echo 'Testing the application...'
+            echo 'Pushing the Docker Image...'
               }
           }
- 	stage('Test') {
+ 	stage('Archving') {
           steps{
-            echo 'Testing the application...'
+            echo 'Archving the Docker Images...'
               }
           }
 
-           stage('Deploy') {
-           steps{
-            echo ' Deploying the application...'
-              }
-          }
-       }   
-       
+    }      
     }      
