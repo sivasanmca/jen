@@ -11,7 +11,7 @@ pipeline {
           stage('Test') {
           steps{
             echo 'Testing the application...'
-	    sh 'clean mvn package' 
+	    sh ' mvn package' 
               }
           }
 
