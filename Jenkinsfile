@@ -24,6 +24,10 @@ pipeline {
 	 stage('Push Docker Image') {
           steps{
             echo 'Pushing the Docker Image...'
+	withCredentials([string(credentialsId: '', variable: 'Dockerpwd')]) {
+		sh 'docker login -u sivasanmca -p ${Dockerpwd}'
+		sh 'docker push sivasanmca/dockerimage:${BUILD_NUMBER}'
+       }  
               }
           }
  	stage('Archving') {
