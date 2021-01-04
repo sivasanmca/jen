@@ -36,7 +36,7 @@ pipeline {
 	    
  	stage('Archving') {
           steps{
-            echo 'Archving the Docker Images...'
+             archiveArtifacts '**/target/*.jar'
               }
           }
 
