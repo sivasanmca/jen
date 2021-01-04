@@ -21,15 +21,21 @@ pipeline {
 	  sh 'docker build -t sivasanmca/dockerimage:${BUILD_NUMBER} .'
               }
           }
-	 stage('Push Docker Image') {
+	 stage('Docker Login') {
           steps{
-            echo 'Pushing the Docker Image...'
-	withCredentials([string(credentialsId: '', variable: 'Dockerpwd')]) {
-		sh 'docker login -u sivasanmca -p ${Dockerpwd}'
-		sh 'docker push sivasanmca/dockerimage:${BUILD_NUMBER}'
-       }  
+            echo 'Login to the Docker...'
+	     withCredentials([string(credentialsId: '', variable: 'Dockerpwd')]) {
+               sh 'docker login -u sivasanmca -p ${Dockerpwd}'
+		 }  
               }
           }
+	   stage('Push Docker Image') {
+          steps{
+            echo 'Push Docker Images...'
+		  sh ' docker push sivasanmca/dockerimages:${BUILD_NUMBER)'  
+              }
+          }
+	    
  	stage('Archving') {
           steps{
             echo 'Archving the Docker Images...'
