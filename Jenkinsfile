@@ -1,9 +1,11 @@
 pipeline {
     agent none 
     stages {
-        stage(' Build') {
+        stage('SCM Checkout') {
           steps{
             echo 'Building the application...'
+	    git 'https://github.com/sivasanmca/jen.git'
+            
               }
           }
           stage('Test') {
@@ -11,8 +13,25 @@ pipeline {
             echo 'Testing the application...'
               }
           }
-           stage('Deploy') {
+
+	 stage('Test') {
           steps{
+            echo 'Testing the application...'
+              }
+          }
+	 stage('Test') {
+          steps{
+            echo 'Testing the application...'
+              }
+          }
+ 	stage('Test') {
+          steps{
+            echo 'Testing the application...'
+              }
+          }
+
+           stage('Deploy') {
+           steps{
             echo ' Deploying the application...'
               }
           }
