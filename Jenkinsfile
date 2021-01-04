@@ -30,8 +30,7 @@ pipeline {
           }
 	   stage('Push Docker Image') {
           steps{
-            echo 'Push Docker Images...'
-		  sh 'docker push sivasanmca/dockerimage:${BUILD_NUMBER)'  
+             sh 'docker push sivasanmca/dockerimage:${BUILD_NUMBER)'  
               }
           }
 	    
